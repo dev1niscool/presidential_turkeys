@@ -1,4 +1,14 @@
 {
+  "1989": {
+    "src": "assets/photos/1989.jpg",
+    "alt": "President George H. W. Bush with children and the Thanksgiving turkey at the first official pardon in the Rose Garden on November 17, 1989.",
+    "credit": "George Bush Presidential Library and Museum / NARA",
+    "source": "https://www.whitehousehistory.org/photos/fotoware?id=4ACCDB57AD3E4F6B+BD41A172B8F7D7EB",
+    "license": "Public domain \u2014 Presidential Library / NARA photograph",
+    "rightsSource": "https://www.whitehousehistory.org/press-room-old/rights-and-reproductions-guidelines",
+    "width": 1040,
+    "height": 690
+  },
   "1990": {
     "src": "assets/photos/1990.jpg",
     "alt": "President George H. W. Bush with the 1990 Thanksgiving turkey and his grandson Sam.",
@@ -26,6 +36,26 @@
     "width": 1400,
     "height": 1120
   },
+  "1993": {
+    "src": "assets/photos/1993.jpg",
+    "alt": "President Bill Clinton stands beside the Thanksgiving turkey during his first turkey pardon on November 24, 1993.",
+    "credit": "Courtesy; William J. Clinton Presidential Library \u2014 White House Television video still",
+    "source": "https://catalog.archives.gov/id/207430293",
+    "license": "Public domain \u2014 U.S. government work (White House Television); NARA use restrictions: unrestricted.",
+    "width": 490,
+    "height": 360,
+    "videoTimestamp": "00:03:40"
+  },
+  "1996": {
+    "src": "assets/photos/1996.jpg",
+    "alt": "President Bill Clinton rests a hand on the Thanksgiving turkey at the White House on November 27, 1996.",
+    "credit": "White House Television; Courtesy; William J. Clinton Presidential Library",
+    "source": "https://catalog.archives.gov/id/203743829",
+    "license": "Public domain (U.S. Government work)",
+    "width": 480,
+    "height": 360,
+    "videoTimestamp": "00:02:28"
+  },
   "1998": {
     "src": "assets/photos/1998.jpg",
     "alt": "President Bill Clinton at the 1998 Thanksgiving turkey presentation.",
@@ -37,12 +67,23 @@
   },
   "1999": {
     "src": "assets/photos/1999.jpg",
-    "alt": "President Bill Clinton stands beside the 1999 Thanksgiving turkey.",
-    "credit": "Clinton Presidential Materials Project",
-    "source": "https://commons.wikimedia.org/wiki/File:Bill_Clinton,_turkey_pardon.jpg",
-    "license": "Public domain \u2014 U.S. federal government work",
-    "width": 400,
-    "height": 267
+    "alt": "President Bill Clinton with Harry the Thanksgiving turkey at the White House on November 24, 1999.",
+    "credit": "William J. Clinton Presidential Library and Museum / NARA",
+    "source": "https://www.whitehousehistory.org/photos/thanksgiving-president-clinton-pardons-a-turkey",
+    "license": "Public domain \u2014 U.S. federal government photograph",
+    "rightsSource": "https://www.whitehousehistory.org/press-room-old/rights-and-reproductions-guidelines",
+    "width": 1040,
+    "height": 719
+  },
+  "2000": {
+    "src": "assets/photos/2000.jpg",
+    "alt": "President Bill Clinton stands behind Jerry the Thanksgiving turkey at the White House on November 22, 2000.",
+    "credit": "White House Television; Courtesy; William J. Clinton Presidential Library",
+    "source": "https://catalog.archives.gov/id/6850721",
+    "license": "Public domain (U.S. Government work)",
+    "width": 654,
+    "height": 480,
+    "videoTimestamp": "00:07:04"
   },
   "2001": {
     "src": "assets/photos/2001.jpg",
@@ -151,6 +192,17 @@
     "license": "Public domain \u2014 U.S. federal government work",
     "width": 960,
     "height": 640
+  },
+  "2013": {
+    "src": "assets/photos/2013.jpg",
+    "alt": "President Barack Obama and daughters Sasha and Malia with Popcorn during the November 27, 2013 turkey pardon.",
+    "credit": "White House video still / Obama Presidential Library",
+    "source": "https://obamawhitehouse.archives.gov/photos-and-video/video/2013/11/27/president-obama-pardons-white-house-turkey",
+    "license": "Public domain \u2014 U.S. federal government video",
+    "videoTimestamp": "00:04:05",
+    "videoSource": "https://obamawhitehouse.archives.gov/videos/2013/November/112713_TurkeyPardon_HD.mp4",
+    "width": 1280,
+    "height": 720
   },
   "2014": {
     "src": "assets/photos/2014.jpg",

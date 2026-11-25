@@ -10,6 +10,11 @@ const types = {'.html':'text/html','.js':'text/javascript','.css':'text/css','.j
  try {
  const page=await browser.newPage({viewport:{width:1440,height:1000}}); const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.route('http://atlas.test/**',async route=>{const relative=new URL(route.request().url()).pathname.replace(/^\/presidential_turkeys\//,'')||'index.html';try{await route.fulfill({body:await fs.readFile(path.join(root,relative)),contentType:types[path.extname(relative)]||'text/plain'});}catch{await route.fulfill({status:404,body:'missing'});}});
+ async function escapeProfile() {
+  await page.evaluate(()=>{window.profileClosed=new Promise(resolve=>document.querySelector('#profile').addEventListener('close',()=>resolve(),{once:true}));});
+  await page.keyboard.press('Escape');
+  await page.evaluate(()=>window.profileClosed);
+ }
  await page.goto(base);await page.waitForFunction(()=>document.querySelectorAll('.turkey-card').length===38);
  await page.locator('a[href="#year-2024"].card-link').hover();
  assert.equal(await page.locator('#selection-name').textContent(),'Peach & Blossom');
@@ -18,7 +23,7 @@ const types = {'.html':'text/html','.js':'text/javascript','.css':'text/css','.j
  await page.locator('a[href="#year-2024"].card-link').click();
  await page.waitForFunction(()=>document.querySelector('#profile').open);
  assert.equal(await page.locator('#profile-title').textContent(),'Peach & Blossom');
- await page.keyboard.press('Escape');
+ await escapeProfile();
  assert.equal(await page.locator('#profile').evaluate(el=>el.open),false);
  assert.equal(await page.evaluate(()=>document.activeElement.getAttribute('href')),'#year-2024');
  await page.locator('#search').fill('  BLOSSOM minnesota  ');
@@ -29,12 +34,32 @@ const types = {'.html':'text/html','.js':'text/javascript','.css':'text/css','.j
  assert.equal(await page.locator('.turkey-card').count(),38);
  await page.goto(base+'#year-1989');await page.waitForFunction(()=>document.querySelector('#profile').open);
  assert.equal(await page.locator('#profile-title').textContent(),'Unnamed');
- await page.keyboard.press('Escape');
+ await escapeProfile();
  for(const width of [320,375,768,1024,1440]) {await page.setViewportSize({width,height:1000});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),width,`Overflow ${width}`);}
+ for (const year of [1989,1993,1996,2000,2013]) {
+  await page.goto(base+'#year-'+year);await page.waitForFunction(()=>document.querySelector('#profile').open);
+  const photo=page.locator('.profile-photo');
+  assert.equal(await photo.count(),1,`Missing recovered image for ${year}`);
+  await photo.evaluate(img=>img.decode());
+  assert.ok(await photo.evaluate(img=>img.naturalWidth>0));
+  await escapeProfile();
+ }
+ for (const year of [1994,1995,1997]) {
+  await page.locator(`.card-link[data-year="${year}"]`).focus();
+  assert.match(await page.locator('#selection-photo').textContent(),/Ceremony film/);
+  await page.locator(`.card-link[data-year="${year}"]`).click();
+  await page.waitForFunction(()=>document.querySelector('#profile').open);
+  const film=page.getByRole('link',{name:'Watch ceremony'});
+  assert.equal(await film.count(),1);
+  assert.match(await film.getAttribute('href'),/^https:\/\/www\.youtube\.com\/watch\?v=/);
+  assert.equal(await film.getAttribute('target'),'_blank');
+  assert.equal(await page.locator('a a').count(),0,'No nested links');
+  await escapeProfile();
+ }
  await page.setViewportSize({width:1440,height:1000});await page.locator('a[href="#year-2024"].card-link').hover();
  await page.evaluate(async()=>{await document.fonts.ready;document.querySelectorAll('img').forEach(i=>i.loading='eager');await Promise.all([...document.images].map(i=>i.decode().catch(()=>{})));});
 
 
- assert.deepEqual(errors,[]);console.log('PASS: hover/focus preview, click, Escape/focus restoration, combined search/decade, reset, direct links, responsive widths, no page errors.');
+ assert.deepEqual(errors,[]);console.log('PASS: hover/focus preview, click, Escape/focus restoration, combined search/decade, reset, direct links, recovered image decoding, official-film links, responsive widths, no page errors.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});
