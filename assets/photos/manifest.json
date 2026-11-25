@@ -46,6 +46,42 @@
     "height": 360,
     "videoTimestamp": "00:03:40"
   },
+  "1994": {
+    "src": "assets/photos/1994.jpg",
+    "alt": "President Bill Clinton and guests stand beside Tom the Thanksgiving turkey at the White House in 1994.",
+    "credit": "Courtesy; William J. Clinton Presidential Library \u2014 White House Television video still",
+    "source": "https://www.youtube.com/watch?v=a4_l5e1npvo",
+    "videoSource": "https://www.youtube.com/watch?v=a4_l5e1npvo",
+    "license": "Public domain \u2014 U.S. government work (White House Television)",
+    "width": 1179,
+    "height": 1140,
+    "viewport": {
+      "x": 8,
+      "y": 0,
+      "width": 1161,
+      "height": 660
+    },
+    "alignment": "xMinYMid",
+    "captureNote": "Screenshot supplied by the site owner; exact video timestamp not recorded. The browser viewport excludes player controls while preserving the original image file."
+  },
+  "1995": {
+    "src": "assets/photos/1995.jpg",
+    "alt": "President Bill Clinton rests his hand on Tom Jefferson, the Thanksgiving turkey, at the White House in 1995.",
+    "credit": "Courtesy; William J. Clinton Presidential Library \u2014 White House Television video still",
+    "source": "https://www.youtube.com/watch?v=F-V19sUsiVw",
+    "videoSource": "https://www.youtube.com/watch?v=F-V19sUsiVw",
+    "license": "Public domain \u2014 U.S. government work (White House Television)",
+    "width": 1179,
+    "height": 1036,
+    "viewport": {
+      "x": 8,
+      "y": 0,
+      "width": 1161,
+      "height": 660
+    },
+    "alignment": "xMidYMid",
+    "captureNote": "Screenshot supplied by the site owner; exact video timestamp not recorded. The browser viewport excludes player controls while preserving the original image file."
+  },
   "1996": {
     "src": "assets/photos/1996.jpg",
     "alt": "President Bill Clinton rests a hand on the Thanksgiving turkey at the White House on November 27, 1996.",
@@ -55,6 +91,24 @@
     "width": 480,
     "height": 360,
     "videoTimestamp": "00:02:28"
+  },
+  "1997": {
+    "src": "assets/photos/1997.jpg",
+    "alt": "President Bill Clinton and children pet Willis the Thanksgiving turkey at the White House in 1997.",
+    "credit": "Courtesy; William J. Clinton Presidential Library \u2014 White House Television video still",
+    "source": "https://www.youtube.com/watch?v=n6hM_Idewtc",
+    "videoSource": "https://www.youtube.com/watch?v=n6hM_Idewtc",
+    "license": "Public domain \u2014 U.S. government work (White House Television)",
+    "width": 1179,
+    "height": 1234,
+    "viewport": {
+      "x": 14,
+      "y": 1,
+      "width": 1151,
+      "height": 860
+    },
+    "alignment": "xMidYMid",
+    "captureNote": "Screenshot supplied by the site owner; exact video timestamp not recorded. The browser viewport excludes player controls while preserving the original image file."
   },
   "1998": {
     "src": "assets/photos/1998.jpg",

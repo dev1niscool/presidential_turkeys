@@ -16,11 +16,20 @@ function imageMarkup(record, mode = 'card') {
     return mode === 'profile' ? `<a class="archive-film" href="${escape(record.video.url)}" target="_blank" rel="noopener noreferrer">${content}</a>` : `<div class="archive-film">${content}</div>`;
   }
   if (!photo) return placeholder();
+  if (photo.viewport) {
+    const { x, y, width, height } = photo.viewport;
+    return `<svg class="archive-photo${mode === 'profile' ? ' profile-photo' : ''}" viewBox="${x} ${y} ${width} ${height}" preserveAspectRatio="${photo.alignment || 'xMidYMid'} slice" role="img" aria-label="${escape(photo.alt)}"><image href="${escape(photo.src)}" width="${photo.width}" height="${photo.height}"/></svg>`;
+  }
   const position = (mode === 'card' ? squarePosition : portraitPosition)[record.year] ?? 50;
   return `<img ${mode === 'profile' ? 'class="profile-photo"' : ''} src="${escape(photo.src)}" alt="${escape(photo.alt)}" style="object-position:${position}% 50%" ${mode === 'card' ? 'loading="lazy" decoding="async"' : ''}>`;
 }
 
 function handleBrokenImages(root) {
+  root.querySelectorAll('svg.archive-photo').forEach(svg => {
+    const probe = new Image();
+    probe.onerror = () => { const box = document.createElement('div'); box.innerHTML = placeholder('Photo unavailable'); svg.replaceWith(box.firstElementChild); };
+    probe.src = svg.querySelector('image').getAttribute('href');
+  });
   root.querySelectorAll('img').forEach(img => {
     const replaceBroken = () => { const box = document.createElement('div'); box.innerHTML = placeholder('Photo unavailable'); img.replaceWith(box.firstElementChild); };
     img.addEventListener('error', replaceBroken, {once:true});
@@ -70,7 +79,7 @@ function openProfile(record) {
   if (!$('#profile').open) priorFocus = document.activeElement;
   const date = record.date ? new Date(`${record.date}T12:00:00Z`).toLocaleDateString('en-US', {year:'numeric',month:'short',day:'numeric',timeZone:'UTC'}) : 'Not recorded';
   const older = records.find(r => r.year === record.year - 1), newer = records.find(r => r.year === record.year + 1);
-  $('#profile-content').innerHTML = `<div class="profile-layout"><div class="profile-visual">${imageMarkup(record, 'profile')}</div><div class="profile-copy"><p class="profile-year">${record.year}</p><h2 id="profile-title">${escape(title(record))}</h2><p class="profile-president">${escape(record.president)}</p><p class="profile-fact">${escape(record.fact)}</p><dl class="profile-fields"><div><dt>Pardoned</dt><dd>${escape(date)}</dd></div><div><dt>From</dt><dd>${escape(record.origin || 'Not recorded')}</dd></div><div><dt>Retired to</dt><dd>${escape(record.retirement || 'Not recorded')}</dd></div></dl><details class="profile-sources"><summary>Sources & credits</summary>${record.note ? `<p class="profile-note">${escape(record.note)}</p>` : ''}${record.sources.map(source => `<a href="${escape(source.url)}" target="_blank" rel="noopener noreferrer">${escape(source.label)}</a>`).join('')}${photo ? `<p class="profile-credit">${escape(photo.credit)}${photo.videoTimestamp ? ` · Still at ${escape(photo.videoTimestamp)}` : ''} · ${escape(photo.license)}. <a href="${escape(photo.source)}" target="_blank" rel="noopener noreferrer">${photo.videoTimestamp ? 'Video source' : 'Photo source'}</a></p>` : record.video ? `<p class="profile-credit">${escape(record.video.credit)}</p>` : ''}</details><div class="profile-bottom">${older ? `<a href="#year-${older.year}">Previous · ${older.year}</a>` : '<span></span>'}${newer ? `<a href="#year-${newer.year}">Next · ${newer.year}</a>` : '<span></span>'}</div></div></div>`;
+  $('#profile-content').innerHTML = `<div class="profile-layout"><div class="profile-visual">${imageMarkup(record, 'profile')}</div><div class="profile-copy"><p class="profile-year">${record.year}</p><h2 id="profile-title">${escape(title(record))}</h2><p class="profile-president">${escape(record.president)}</p><p class="profile-fact">${escape(record.fact)}</p><dl class="profile-fields"><div><dt>Pardoned</dt><dd>${escape(date)}</dd></div><div><dt>From</dt><dd>${escape(record.origin || 'Not recorded')}</dd></div><div><dt>Retired to</dt><dd>${escape(record.retirement || 'Not recorded')}</dd></div></dl><details class="profile-sources"><summary>Sources & credits</summary>${record.note ? `<p class="profile-note">${escape(record.note)}</p>` : ''}${record.sources.map(source => `<a href="${escape(source.url)}" target="_blank" rel="noopener noreferrer">${escape(source.label)}</a>`).join('')}${photo ? `<p class="profile-credit">${escape(photo.credit)}${photo.videoTimestamp ? ` · Still at ${escape(photo.videoTimestamp)}` : ''} · ${escape(photo.license)}. <a href="${escape(photo.source)}" target="_blank" rel="noopener noreferrer">${photo.videoTimestamp || photo.videoSource ? 'Video source' : 'Photo source'}</a></p>` : record.video ? `<p class="profile-credit">${escape(record.video.credit)}</p>` : ''}</details><div class="profile-bottom">${older ? `<a href="#year-${older.year}">Previous · ${older.year}</a>` : '<span></span>'}${newer ? `<a href="#year-${newer.year}">Next · ${newer.year}</a>` : '<span></span>'}</div></div></div>`;
   handleBrokenImages($('#profile-content'));
   if (!$('#profile').open) $('#profile').showModal();
   $('#profile').scrollTop = 0;

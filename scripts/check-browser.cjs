@@ -46,20 +46,23 @@ const types = {'.html':'text/html','.js':'text/javascript','.css':'text/css','.j
  }
  for (const year of [1994,1995,1997]) {
   await page.locator(`.card-link[data-year="${year}"]`).focus();
-  assert.match(await page.locator('#selection-photo').textContent(),/Ceremony film/);
+  assert.equal(await page.locator('#selection-photo [role="img"]').count(),1,`Missing screenshot preview for ${year}`);
   await page.locator(`.card-link[data-year="${year}"]`).click();
   await page.waitForFunction(()=>document.querySelector('#profile').open);
-  const film=page.getByRole('link',{name:'Watch ceremony'});
-  assert.equal(await film.count(),1);
-  assert.match(await film.getAttribute('href'),/^https:\/\/www\.youtube\.com\/watch\?v=/);
-  assert.equal(await film.getAttribute('target'),'_blank');
-  assert.equal(await page.locator('a a').count(),0,'No nested links');
+  const photo=page.locator('.profile-visual [role="img"]');
+  assert.equal(await photo.count(),1);
+  assert.match(await photo.getAttribute('aria-label'),/turkey/i);
+  await photo.locator('image').evaluate(async node=>{const image=new Image();image.src=node.getAttribute('href');await image.decode();});
+  await page.locator('.profile-sources summary').click();
+  const source=page.getByRole('link',{name:'Video source'});
+  assert.match(await source.getAttribute('href'),/^https:\/\/www\.youtube\.com\/watch\?v=/);
   await escapeProfile();
  }
+ assert.equal(await page.locator('.card-link .no-photo, .card-link .archive-film').count(),0,'Every year has a portrait');
  await page.setViewportSize({width:1440,height:1000});await page.locator('a[href="#year-2024"].card-link').hover();
  await page.evaluate(async()=>{await document.fonts.ready;document.querySelectorAll('img').forEach(i=>i.loading='eager');await Promise.all([...document.images].map(i=>i.decode().catch(()=>{})));});
 
 
- assert.deepEqual(errors,[]);console.log('PASS: hover/focus preview, click, Escape/focus restoration, combined search/decade, reset, direct links, recovered image decoding, official-film links, responsive widths, no page errors.');
+ assert.deepEqual(errors,[]);console.log('PASS: hover/focus preview, click, Escape/focus restoration, combined search/decade, reset, direct links, recovered image decoding, supplied screenshot portraits and film credits, responsive widths, no page errors.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

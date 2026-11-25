@@ -31,3 +31,9 @@ The new browser assertions first failed on the missing 1989 image, then passed a
 Independent review found no concrete issues; all 35 image dimensions matched their manifests. Desktop portrait framing and the mobile film profile were visually inspected.
 
 A final browser rerun exposed a timing issue in the new test: it moved focus before the native dialog close event finished restoring focus. Event logging confirmed the ordering; the checks now await that event before continuing.
+
+## Final three portraits
+
+The user supplied screenshots of the official 1994, 1995 and 1997 Clinton Library videos. The visible titles identify each year. Added the originals byte-for-byte, with exact browser viewport bounds excluding the player UI; no historical pixels were generated or retouched. The manifest preserves the official video links, Clinton Library credits, original dimensions and capture notes. No timestamp is claimed because none is visible. All 38 years now have images.
+
+Browser assertions were updated from the three film-only tiles to screenshot previews, profile images and video-source credits. They first failed before integration and then passed. Six data/search tests also passed. Desktop roster and mobile profile framing were visually checked, with all three birds visible and player controls excluded.
