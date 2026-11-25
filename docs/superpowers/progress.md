@@ -37,3 +37,11 @@ A final browser rerun exposed a timing issue in the new test: it moved focus bef
 The user supplied screenshots of the official 1994, 1995 and 1997 Clinton Library videos. The visible titles identify each year. Added the originals byte-for-byte, with exact browser viewport bounds excluding the player UI; no historical pixels were generated or retouched. The manifest preserves the official video links, Clinton Library credits, original dimensions and capture notes. No timestamp is claimed because none is visible. All 38 years now have images.
 
 Browser assertions were updated from the three film-only tiles to screenshot previews, profile images and video-source credits. They first failed before integration and then passed. Six data/search tests also passed. Desktop roster and mobile profile framing were visually checked, with all three birds visible and player controls excluded.
+
+## App icon and sharing banner
+
+User requested a home-screen icon and the banner shown when sharing a site link. Kept the established ivory/forest palette, generated a simplified turkey emblem, and exported opaque 32/180/192/512 PNGs. The mark fits the maskable-icon safe circle. Composed a 1200 × 630 banner from the site typography and four existing archival portraits; no historical photographs were generated. Added Apple home-screen metadata, a scoped standalone web manifest, canonical URL, and static Open Graph/Twitter large-image metadata with absolute public URLs. The main website layout is unchanged.
+
+Image dimensions, opacity and safe-area geometry were checked; the banner was visually inspected. Original icon art and reproducible banner source are retained.
+
+Independent review caught a relative app ID resolving to the GitHub Pages origin root. Chromium reproduced the issue; the ID now explicitly uses `/presidential_turkeys/` to keep this installed app distinct from other projects. Existing data/search and browser interaction checks passed.

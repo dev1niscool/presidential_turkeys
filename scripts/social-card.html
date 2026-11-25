@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Presidential Turkeys — share artwork</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Libre+Caslon+Display&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box}body{margin:0;width:1200px;height:630px;overflow:hidden;background:#f3f2ed;color:#293c32;font-family:'DM Sans',sans-serif}
+    .mark{position:absolute;left:64px;top:70px;width:76px;height:76px;border-radius:17px}
+    h1{position:absolute;left:60px;top:226px;margin:0;font:112px/.95 'Libre Caslon Display',Georgia,serif;letter-spacing:-2.5px;font-weight:400}
+    .dates{position:absolute;left:64px;bottom:70px;margin:0;font-size:17px;letter-spacing:1.8px;color:#71776e}
+    .portraits{position:absolute;left:650px;right:64px;top:70px;bottom:70px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:16px}
+    figure{position:relative;min-width:0;min-height:0;margin:0;overflow:hidden;border-radius:2px;background:#e1e4da}
+    figure>img,figure>svg{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.7);overflow:hidden}
+    figure::after{content:'';position:absolute;inset:60% 0 0;background:linear-gradient(transparent,#10251bb0)}
+    figcaption{position:absolute;bottom:14px;left:17px;z-index:1;color:#fff;font-size:15px;letter-spacing:.5px}
+  </style>
+</head>
+<body>
+  <img class="mark" src="../assets/icons/icon-192.png" alt="Ivory turkey emblem">
+  <h1>Presidential<br>Turkeys</h1>
+  <p class="dates">1989 — 2026</p>
+  <div class="portraits">
+    <figure><img src="../assets/photos/1989.jpg" style="object-position:65% 50%" alt="The first formally pardoned turkey"><figcaption>1989</figcaption></figure>
+    <figure><svg viewBox="8 0 1161 660" preserveAspectRatio="xMinYMid slice" role="img" aria-label="Tom, the 1994 turkey"><image href="../assets/photos/1994.jpg" width="1179" height="1140"/></svg><figcaption>1994</figcaption></figure>
+    <figure><img src="../assets/photos/2013.jpg" style="object-position:15% 50%" alt="Popcorn in 2013"><figcaption>2013</figcaption></figure>
+    <figure><img src="../assets/photos/hero-alternate.jpg" alt="Peach and Blossom in 2024"><figcaption>2024</figcaption></figure>
+  </div>
+</body>
+</html>

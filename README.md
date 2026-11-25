@@ -32,7 +32,7 @@ Primary White House remarks and contemporaneous records take precedence when lat
 
 ## Image rights and independence
 
-Photographs are U.S. federal-government works identified as public domain by their source records; see each profile and the manifests for exact credits and links. The graphic turkey mark was drawn for this site. Fonts are served by Google Fonts (DM Sans and Libre Caslon Display), with local system fallbacks. This project is not affiliated with the White House or the National Archives.
+Photographs are U.S. federal-government works identified as public domain by their source records; see each profile and the manifests for exact credits and links. The placeholder turkey mark was drawn for this site; the ivory app-icon illustration was generated for this project. The social banner uses archival photographs credited in the photo manifests. Fonts are served by Google Fonts (DM Sans and Libre Caslon Display), with local system fallbacks. This project is not affiliated with the White House or the National Archives.
 
 Corrections and additional sourced archival photographs are welcome through GitHub issues or pull requests.
 
@@ -45,3 +45,15 @@ npm run test:browser
 ```
 
 To use an existing Chromium installation, set `TURKEY_CHROMIUM_PATH`. The browser checks exercise the actual static files at a simulated GitHub Pages subpath, including hover/focus, dialogs, filters and responsive layout.
+
+## App icon and link previews
+
+The site includes an Apple home-screen icon, Android app icons, a maskable icon, and a browser favicon. `manifest.webmanifest` uses the GitHub Pages project scope. Open Graph and Twitter metadata point to the 1200 × 630 share banner using absolute public URLs. The manifest enables standalone home-screen launches; this does not add offline support.
+
+The generated icon master is preserved in `assets/icons/turkey-master.png`; published PNG sizes are 32, 180, 192 and 512 pixels. The banner layout is in `scripts/social-card.html`. After changing that layout or its photographs, regenerate the JPEG with:
+
+```sh
+TURKEY_CHROMIUM_PATH=/usr/bin/chromium node scripts/generate-social-card.cjs
+```
+
+Generation uses the site's Google Fonts and requires network access. Messaging services may cache link previews; future banner revisions should use a new image filename and update both image meta tags.
