@@ -3,55 +3,42 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#243c32">
-  <meta name="description" content="A curious little archive of America's luckiest birds. Explore every annual presidential turkey pardon since 1989, with archival photographs, stories, and sources.">
-  <title>The Presidential Turkey Atlas</title>
+  <meta name="theme-color" content="#f3f2ed">
+  <meta name="description" content="Presidential turkeys, 1989–2026. Choose a turkey to explore its story.">
+  <title>Presidential Turkeys</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;700&family=Libre+Caslon+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Libre+Caslon+Display&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script type="module" src="app.js"></script>
 </head>
 <body>
-  <a class="skip-link" href="#collection">Skip to the collection</a>
+  <a class="skip-link" href="#collection">Skip to turkeys</a>
   <header class="site-header wrap">
-    <a class="wordmark" href="./" aria-label="Presidential Turkey Atlas home"><img src="assets/favicon.svg" width="42" height="42" alt=""><span>PRESIDENTIAL<br>TURKEY ATLAS</span></a>
-    <nav aria-label="Main navigation"><a href="#collection">The collection</a><a href="#history">The tradition</a><a href="#about">About the atlas</a></nav>
-    <span class="header-note">A most unusual American archive</span>
+    <h1><a href="./">Presidential Turkeys</a></h1>
+    <div class="header-meta"><span id="year-span">1989–2026</span><a href="https://github.com/dev1niscool/presidential_turkeys" target="_blank" rel="noopener noreferrer">GitHub</a></div>
   </header>
-  <main>
-    <section class="hero wrap" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="small-star">✳︎</span> A place in history. A reprieve from dinner.</p>
-        <h1 id="hero-title">America’s<br><em>luckiest</em><br>birds.</h1>
-        <p class="hero-intro">Meet the turkeys who made it to the White House—and lived to gobble the tale. A year-by-year atlas of the presidential pardon.</p>
-        <div class="hero-actions"><a class="button" href="#collection">Explore the collection</a><button class="text-button" id="surprise" type="button">Meet a random turkey <span aria-hidden="true">✳︎</span></button></div>
+  <main class="select-screen wrap" id="collection">
+    <section class="selection" aria-label="Selected turkey">
+      <a id="selection-photo" class="selection-photo" href="#year-2024" aria-label="View Peach and Blossom"><img src="assets/photos/hero-alternate.jpg" alt="Peach and Blossom at the White House" fetchpriority="high"></a>
+      <div class="selection-caption"><span id="selection-year">2024</span><span class="selection-status" aria-hidden="true">Selected</span></div>
+      <h2 id="selection-name">Peach &amp; Blossom</h2>
+      <p id="selection-president">Joe Biden</p>
+      <a id="selection-open" class="details-link" href="#year-2024">View profile</a>
+    </section>
+    <section class="roster" aria-label="Choose a turkey">
+      <div class="roster-tools">
+        <div class="decades" role="group" aria-label="Filter by decade"><button type="button" class="active" data-decade="all" aria-pressed="true">All</button><button type="button" data-decade="2020" aria-pressed="false">2020s</button><button type="button" data-decade="2010" aria-pressed="false">2010s</button><button type="button" data-decade="2000" aria-pressed="false">2000s</button><button type="button" data-decade="1990" aria-pressed="false">1990s</button><button type="button" data-decade="1980" aria-pressed="false">1980s</button></div>
+        <form id="filters" role="search" aria-label="Search turkeys"><label class="search-field"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span class="sr-only">Search by name, year, president or state</span><input id="search" type="search" placeholder="Search" autocomplete="off"></label></form>
       </div>
-      <figure class="hero-figure">
-        <div class="hero-photo"><img id="hero-photo" src="assets/photos/hero-alternate.jpg" alt="Peach and Blossom in front of the White House in 2024" fetchpriority="high"><span class="archive-seal" aria-hidden="true">PRESIDENTIAL<br><b>Turkey</b>ATLAS</span></div>
-        <figcaption><span id="hero-caption">2024 · Peach & Blossom · The White House</span><button id="hero-details" class="caption-button" type="button">Meet the pair</button></figcaption>
-      </figure>
-    </section>
-    <div class="intro-strip wrap"><p>A little pomp.<br><i>A lot of plumage.</i></p><div><strong id="year-span">1989–2026</strong><span>The modern tradition</span></div><div><strong id="year-count">38</strong><span>Annual pardons</span></div><div><strong>One</strong><span>Very lucky guest list</span></div></div>
-    <section class="collection wrap" id="collection" aria-labelledby="collection-title">
-      <div class="section-heading"><div><p class="eyebrow">THE HONORED FLOCK</p><h2 id="collection-title">Every year. Every pardon.</h2></div><p>Some became celebrities. Some went to college.<br>All had an excellent reason to give thanks.</p></div>
-      <form id="filters" class="filters" role="search" aria-label="Search the turkey collection">
-        <label class="search-field"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span class="sr-only">Search by name, year, president or state</span><input id="search" type="search" placeholder="A name, a year, a president…" autocomplete="off"></label>
-        <label class="select-field"><span class="sr-only">Filter by president</span><select id="president"><option value="all">All presidents</option></select></label>
-        <label class="select-field"><span class="sr-only">Sort years</span><select id="sort"><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select></label>
-      </form>
-      <div class="collection-tools"><div class="decades" role="group" aria-label="Filter by decade"><button type="button" class="active" data-decade="all" aria-pressed="true">All years</button><button type="button" data-decade="2020" aria-pressed="false">2020s</button><button type="button" data-decade="2010" aria-pressed="false">2010s</button><button type="button" data-decade="2000" aria-pressed="false">2000s</button><button type="button" data-decade="1990" aria-pressed="false">1990s</button><button type="button" data-decade="1980" aria-pressed="false">1980s</button></div><p id="result-count" role="status" aria-live="polite">Opening the archive…</p></div>
+      <p id="result-count" class="sr-only" role="status" aria-live="polite">Loading turkeys</p>
       <div id="archive" class="card-grid"></div>
-      <div id="empty" class="empty-state" hidden><span aria-hidden="true">✳︎</span><h3>No birds by that name.</h3><p>Try a different name, year, president, or state.</p><button class="button" id="reset" type="button">Clear all filters</button></div>
-      <p id="load-error" hidden>We couldn’t open the archive. Please refresh the page to try again.</p>
-      <noscript><p>This searchable collection needs JavaScript. You can also <a href="data/turkeys.json">read the complete archive as JSON</a>.</p></noscript>
-      <p class="collection-footnote">A note on the guest list: where known, each year includes the ceremonial turkey and its alternate. Both birds were spared. Early records don’t always preserve their names.</p>
+      <div id="empty" class="empty-state" hidden><p>No matches.</p><button id="reset" type="button">Reset filters</button></div>
+      <p id="load-error" hidden>Unable to load. Please refresh.</p>
+      <noscript><a href="data/turkeys.json">Read the archive</a></noscript>
     </section>
-    <section class="history" id="history" aria-labelledby="history-title"><div class="wrap history-inner"><div class="history-intro"><p class="eyebrow">HOW WE GOT HERE</p><h2 id="history-title">An old tradition.<br>A relatively<br><em>new pardon.</em></h2><p>The turkey has been a White House visitor for much longer than it has been an official guest of honor.</p><a href="https://www.whitehousehistory.org/pardoning-the-thanksgiving-turkey" target="_blank" rel="noopener noreferrer">Read the history at the WHHA</a></div><div class="timeline"><article><span>1947</span><div><h3>The presentation begins</h3><p>The modern National Thanksgiving Turkey presentation begins with Harry S. Truman. A presentation, however, was not a pardon.</p></div></article><article><span>1963</span><div><h3>Kennedy spares his guest</h3><p>John F. Kennedy sends his turkey back to the farm. An act of mercy, but not yet an annual presidential ritual.</p></div></article><article><span>1987</span><div><h3>A presidential punch line</h3><p>Ronald Reagan jokes about pardoning a turkey named Charlie, two years before the formal tradition begins.</p></div></article><article><span>1989</span><div><h3>The pardon becomes official</h3><p>George H. W. Bush grants his turkey a presidential pardon. Every president since has carried on the ceremony.</p></div></article></div></div></section>
-    <section class="about wrap" id="about"><span class="about-star" aria-hidden="true">✳︎</span><div><p class="eyebrow">SMALL ARCHIVE. BIG BIRDS.</p><h2>History, with a side of gratitude.</h2><p>The Presidential Turkey Atlas is an independent collection of a wonderfully peculiar American tradition. We gather the names, places, photographs, and small stories behind each annual pardon.</p><p>Records draw on White House transcripts, presidential libraries, the White House Historical Association, and the birds’ retirement homes. Sources and photo credits are included in each profile. Unknown names and missing photographs are labeled, never filled in with guesses.</p><p class="about-note">Coverage: annual formal pardons, 1989–<span id="coverage-end">2026</span>. Historical presentations appear separately above. This is an independent project, not an official government website.</p><a class="source-link" href="https://github.com/dev1niscool/presidential_turkeys" target="_blank" rel="noopener noreferrer">Explore the source & suggest a correction</a></div></section>
   </main>
-  <footer class="site-footer wrap"><a class="wordmark" href="./"><img src="assets/favicon.svg" width="34" height="34" alt=""><span>PRESIDENTIAL<br>TURKEY ATLAS</span></a><p>For the record. And for the birds.</p><a href="#">Back to the top</a></footer>
-  <dialog id="profile" aria-labelledby="profile-title"><button class="dialog-close" type="button" aria-label="Close turkey profile">×</button><div id="profile-content"></div></dialog>
+  <dialog id="profile" aria-labelledby="profile-title"><button class="dialog-close" type="button" aria-label="Close profile">×</button><div id="profile-content"></div></dialog>
 </body>
 </html>

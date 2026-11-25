@@ -13,3 +13,9 @@ User delegated design and implementation decisions and explicitly authorized rep
 - Independent review: Chromium verified combined filters, reset, direct-year navigation, browser Back, Escape and focus restoration, mobile widths and image decoding. Two important issues were optional hero metadata blocking archive load and missing cover-image fallback. Both fixed; new metadata-failure test observed red then green. Six tests pass. Rotated seal overflow was also corrected. Historical source checks were performed by the research agents, separate from code review.
 
 - Source published: main f93003a. Pages activation blocked: connected GitHub App has contents/workflows access but no pages or administration write grants. REST creation returned empty HTTP 500; subsequent GET confirms no Pages site. Browser fallback failed at initialization. User was given the exact settings action. Do not claim the Pages URL is live until enabled and verified.
+
+## Selection-screen revision
+
+User requested a simpler, less verbose site resembling a video-game player-selection screen. Replaced the landing page with an interactive portrait roster and selected preview. Removed the hero introduction, slogans, statistics, timeline, about section and repeated labels. Existing factual records and sources remain in compact profiles; source notes and credits are expandable. Added keyboard arrows and year-specific image framing.
+
+GitHub Pages was found enabled on main before the revision; the earlier activation blocker is resolved. Browser assertions passed for hover/focus preview, click, Escape/focus restoration, combined search/decade, empty reset, direct links and widths 320–1440. Six data/search tests pass.

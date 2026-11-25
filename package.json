@@ -5,6 +5,10 @@
   "type": "module",
   "scripts": {
     "test": "node --test",
-    "dev": "python3 scripts/dev.py"
+    "dev": "python3 scripts/dev.py",
+    "test:browser": "node scripts/check-browser.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
   }
 }
