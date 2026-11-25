@@ -2,7 +2,9 @@
 
 A small, independently researched archive of America's luckiest birds.
 
-**Live site:** https://dev1niscool.github.io/presidential_turkeys/
+**GitHub Pages URL (activation pending):** https://dev1niscool.github.io/presidential_turkeys/
+
+The complete site is pushed to `main`. To enable hosting, open [Settings → Pages](https://github.com/dev1niscool/presidential_turkeys/settings/pages), choose **Deploy from a branch → main → /(root) → Save**. The connected app could push source but lacked the Pages and administration permissions required for initial activation.
 
 ## What’s inside
 

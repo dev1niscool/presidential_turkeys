@@ -11,3 +11,5 @@ User delegated design and implementation decisions and explicitly authorized rep
 - Publication: user's original instruction authorizes fast-forward main and Pages configuration; no extra publishing gate is needed.
 
 - Independent review: Chromium verified combined filters, reset, direct-year navigation, browser Back, Escape and focus restoration, mobile widths and image decoding. Two important issues were optional hero metadata blocking archive load and missing cover-image fallback. Both fixed; new metadata-failure test observed red then green. Six tests pass. Rotated seal overflow was also corrected. Historical source checks were performed by the research agents, separate from code review.
+
+- Source published: main f93003a. Pages activation blocked: connected GitHub App has contents/workflows access but no pages or administration write grants. REST creation returned empty HTTP 500; subsequent GET confirms no Pages site. Browser fallback failed at initialization. User was given the exact settings action. Do not claim the Pages URL is live until enabled and verified.
